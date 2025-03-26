@@ -1043,13 +1043,6 @@ class Topology:
         if seed == "":
             raise ValueError("Name seed must be a non-empty string.")
 
-        # Make the seed meet C-style naming convention
-        # Only alphabets and numbers are allowed
-        seed = re.sub("[^\\w+]", "_", seed)
-        # The first symbol cannot be a number
-        if re.match("^[0-9]", seed):
-            seed = "_" + seed
-
         # If seed has never been seen, we return it as it is. Otherwise,
         # we will append an number to make it unique.
         if seed not in existing_names:
